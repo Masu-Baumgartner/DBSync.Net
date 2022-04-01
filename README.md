@@ -1,10 +1,10 @@
 ## DBSync.Net ##
-###A c# library used to syncronice model lists with databases###
+### A c# library used to syncronice model lists with databases ###
 
-####Note:####
+#### Note: ####
 This library is still under development. If you use it for production you do this on your own risk
 
-####Features:####
+#### Features: ####
 
 - One or more database server support
 - Optional encryption for important data
@@ -12,13 +12,13 @@ This library is still under development. If you use it for production you do thi
 - In-Memory cache
 - Threadsafe
 
-####Future Features:####
+#### Future Features: ####
 
 - Store json objects
 - Encrypt json objects
 - Connection string builder
 
-####Quick Start####
+#### Quick Start ####
 
 1) Create a model
 
@@ -65,7 +65,7 @@ table.Add(new TestyModel()
 table.Clear();
 ```
 
-####Additional things:####
+#### Additional things: ####
 
 You can configure a global connection string and encryption key which will be used if its not set before
 
@@ -76,10 +76,10 @@ DBSyncGlobal.EncryptionKey = "Same as above";
 
 Examples can be found in the test project
 
-####Licensing:####
+#### Licensing: ####
 See LICENSE file
 
-####Contact:####
+#### Contact: ####
 
 
 If you have any questions feel free to ask me via:
