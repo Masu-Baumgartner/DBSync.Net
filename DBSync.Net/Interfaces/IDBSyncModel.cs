@@ -11,6 +11,6 @@ namespace DBSync.Net.Interfaces
     public interface IDBSyncModel
     {
         [Key("id")]
-        public int Id { get; set; }
+        int Id { get; set; }
     }
 }

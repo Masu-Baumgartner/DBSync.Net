@@ -84,13 +84,13 @@ namespace DBSync.Net
         {
             Table = table;
 
-            Cache = new();
+            Cache = new List<ColumnCache>();
 
             var type = typeof(T);
 
             foreach (var prop in type.GetProperties())
             {
-                ColumnCache c = new();
+                ColumnCache c = new ColumnCache();
 
                 c.PropName = prop.Name;
                 c.PropType = prop.PropertyType.FullName;

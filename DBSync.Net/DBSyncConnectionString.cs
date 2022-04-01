@@ -78,11 +78,11 @@ namespace DBSync.Net
 
         public static DBSyncConnectionString FromString(string c)
         {
-            var parts = c.Split(";", StringSplitOptions.RemoveEmptyEntries | StringSplitOptions.TrimEntries);
-            DBSyncConnectionString current = new();
+            var parts = c.Split(';');
+            DBSyncConnectionString current = new DBSyncConnectionString();
             foreach (var p in parts)
             {
-                var name = p[..p.IndexOf("=")];
+                var name = p.Substring(0, p.IndexOf("="));
                 var value = p.Remove(0, name.Length + 1);
                 switch (name.ToLower())
                 {
