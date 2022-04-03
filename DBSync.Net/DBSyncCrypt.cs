@@ -12,6 +12,9 @@ namespace DBSync.Net
     {
         public static string Encrypt(string key, string encryptString)
         {
+            if (encryptString == "")
+                return "";
+
             byte[] clearBytes = Encoding.Unicode.GetBytes(encryptString);
             using (Aes encryptor = Aes.Create())
             {
@@ -35,6 +38,9 @@ namespace DBSync.Net
 
         public static string Decrypt(string key, string cipherText)
         {
+            if (cipherText == "")
+                return "";
+
             cipherText = cipherText.Replace(" ", "+");
             byte[] cipherBytes = Convert.FromBase64String(cipherText);
             using (Aes encryptor = Aes.Create())
