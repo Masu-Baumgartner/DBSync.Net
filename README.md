@@ -45,7 +45,10 @@ public class TestyModel : IDBSyncModel
 ```csharp
 var table = new DBSyncTable<TestyModel>("tablename");
 
-table.ConnectionString = "Connection string here"
+table.ConnectionString = new DBSyncConnectionString()
+{
+   // Set with properties here
+};
 table.EncryptionKey = "Optional, encryption key";
 
 table.Init(); // This creates the table in the db if its missing and loads data from it to the cache
