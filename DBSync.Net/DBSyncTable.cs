@@ -103,6 +103,10 @@ namespace DBSync.Net
                     case "String":
                         c.Type = "VARCHAR";
                         break;
+                    case "Boolean":
+                        c.Type = "INT";
+                        c.Length = 1;
+                        break;
                     default:
                         c.Type = "VARCHAR";
                         break; //TODO: Add bool
@@ -231,7 +235,15 @@ namespace DBSync.Net
                     switch (c.Type)
                     {
                         case "INT":
-                            SetProperty(co, c.PropName, reader.GetInt32(c.Name));
+
+                            if(c.Length == 1)
+                            {
+                                SetProperty(co, c.PropName, reader.GetInt32(c.Name) == 1 ? true : false);
+                            }
+                            else
+                            {
+                                SetProperty(co, c.PropName, reader.GetInt32(c.Name));
+                            }
                             break;
                         case "VARCHAR":
                             if (c.Encrypt)
@@ -435,7 +447,10 @@ namespace DBSync.Net
 
         public void CopyTo(T[] array, int arrayIndex)
         {
-            throw new System.NotImplementedException();
+            lock(Data)
+            {
+                Data.CopyTo(array, arrayIndex);
+            }
         }
 
         public bool Remove(T item)
