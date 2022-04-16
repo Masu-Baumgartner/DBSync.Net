@@ -67,7 +67,7 @@ namespace DBSync.Net
                         cmd.Parameters.AddWithValue("@" + c.Name, GetProperty(value, c.PropName));
                 }
 
-                cmd.CommandText = GenerateUpdateTableSQL();
+                cmd.CommandText = GenerateUpdateTableSQL(((IDBSyncModel)value).Id);
                 cmd.Prepare();
 
                 cmd.ExecuteNonQuery();
@@ -311,7 +311,7 @@ namespace DBSync.Net
             return sql;
         }
 
-        public string GenerateUpdateTableSQL()
+        public string GenerateUpdateTableSQL(int id)
         {
             string sql = $"UPDATE {Table} SET ";
 
@@ -325,6 +325,7 @@ namespace DBSync.Net
 
                 i++;
             }
+            sql += $" WHERE id={id}";
 
             return sql;
         }

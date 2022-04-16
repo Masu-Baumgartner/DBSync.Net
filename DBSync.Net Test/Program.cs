@@ -24,7 +24,14 @@ namespace DBSync.Net_Test
                 Text = "testy"
             });
 
-            var o = x.Find(y => y.Text == "testy");
+            x.Add(new TestyModel()
+            {
+                DanielTest = "",
+                Encrypted = "geheim1234",
+                Text = "testy1"
+            });
+
+            var o = x.Find(y => y.Text == "testy1");
 
             o.Text = "tee";
 
